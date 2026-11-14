@@ -1,0 +1,21 @@
+{
+  "name": "scc-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "migrate": "bun scripts/migrate.ts",
+    "seed": "bun scripts/seed.ts",
+    "create-admin": "bun scripts/create-admin.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@hono/bun": "^1.0.1",
+    "@hono/zod-validator": "^0.9.1",
+    "hono": "^4.13.18",
+    "zod": "^4.6.7"
+  }
+}

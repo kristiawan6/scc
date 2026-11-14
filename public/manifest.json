@@ -1,0 +1,10 @@
+{
+  "name": "GBI Soho City Church",
+  "short_name": "SCC",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "lang": "id",
+  "icons": [{ "src": "/icon.png", "sizes": "300x300", "type": "image/png" }]
+}
