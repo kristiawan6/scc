@@ -28,10 +28,10 @@ export function Footer() {
                   {l}
                 </span>
               ))}
-              <a href={`tel:${site.phone.tel}`} className="mt-3 block hover:text-gold">
+              <a href={`tel:${site.phone.tel}`} className="mt-1 block py-2.5 hover:text-gold">
                 {site.phone.number} ({site.phone.label})
               </a>
-              <a href={`mailto:${site.email}`} className="block hover:text-gold">
+              <a href={`mailto:${site.email}`} className="block py-2.5 hover:text-gold">
                 {site.email}
               </a>
             </address>
@@ -40,10 +40,10 @@ export function Footer() {
             <h3 id="footer-links" className={heading}>
               Quick links
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-2">
               {site.nav.map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href} className="hover:text-gold">
+                  <Link href={n.href} className="inline-block py-2.5 hover:text-gold">
                     {n.label}
                   </Link>
                 </li>
@@ -52,15 +52,15 @@ export function Footer() {
           </nav>
           <div>
             <h3 className={heading}>Partners</h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-2">
               {site.partners.map((p) => (
                 <li key={p.name}>
                   {p.href ? (
-                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-block py-2.5 hover:text-gold">
                       {p.name}
                     </a>
                   ) : (
-                    p.name
+                    <span className="inline-block py-2.5">{p.name}</span>
                   )}
                 </li>
               ))}
@@ -68,11 +68,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-between gap-4 border-t border-white/10 py-8 text-sm">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pb-36 pt-6 text-sm lg:pb-8">
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
-          <Link href="/privacy" className="hover:text-gold">
+          <Link href="/privacy" className="inline-block py-3 hover:text-gold">
             Privacy policy
           </Link>
         </div>

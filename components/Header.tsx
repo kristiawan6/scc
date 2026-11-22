@@ -18,8 +18,13 @@ export function Header() {
   return (
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-4 py-4 sm:px-8">
-        <Link href="/" className="pointer-events-auto flex items-center gap-3" aria-label={`${site.name}, beranda`}>
-          <Image src="/scc-mark.png" alt={`Logo ${site.name}`} width={40} height={45} priority className="h-11 w-auto" />
+        {/* Round badge like the menu button: stays legible over any section and is a 48px tap target. */}
+        <Link
+          href="/"
+          className="pointer-events-auto grid size-12 place-items-center rounded-full bg-ink/75 shadow-lg ring-1 ring-white/10 backdrop-blur transition-transform hover:scale-105"
+          aria-label={`${site.name}, beranda`}
+        >
+          <Image src="/scc-mark.png" alt={`Logo ${site.name}`} width={40} height={45} priority className="h-8 w-auto" />
         </Link>
         <button
           type="button"

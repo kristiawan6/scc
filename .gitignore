@@ -48,3 +48,4 @@ next-env.d.ts
 # workspace deps and local tool notes
 node_modules/
 /.remember/
+/.alugra-verify/
