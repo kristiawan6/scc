@@ -1,5 +1,5 @@
 import { campuses, mapEmbed } from "@/content/campuses";
-import { site } from "@/content/site";
+import { alternateNames, site } from "@/content/site";
 import { img } from "./placeholders";
 
 const ORG = `${site.url}/#organization`;
@@ -50,7 +50,7 @@ export function churchJsonLd() {
         "@type": "Organization",
         "@id": ORG,
         name: site.name,
-        alternateName: [site.shortName, "GBI SCC"],
+        alternateName: alternateNames,
         url: site.url,
         logo: { "@type": "ImageObject", url: abs("/icon.png"), width: 512, height: 512 },
         image: abs(img.og),

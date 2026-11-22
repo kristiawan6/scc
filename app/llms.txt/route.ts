@@ -1,5 +1,5 @@
 import { campuses, dayLabel } from "@/content/campuses";
-import { site } from "@/content/site";
+import { alternateNames, site } from "@/content/site";
 
 // https://llmstxt.org — a plain summary for AI assistants, built from the same content as the site.
 export const dynamic = "force-static";
@@ -17,7 +17,7 @@ export function GET() {
   const body = [
     `# ${site.name}`,
     "",
-    `> ${site.name} (GBI SCC) adalah gereja di ${site.address.join(", ")}. ${site.story} ${site.pastors.map((p) => `${p.role}: ${p.name}.`).join(" ")}`,
+    `> ${site.name} (dikenal juga sebagai ${alternateNames.join(", ")}) adalah gereja di ${site.address.join(", ")}. ${site.story} ${site.pastors.map((p) => `${p.role}: ${p.name}.`).join(" ")}`,
     "",
     "Jadwal ibadah (WIB):",
     ...main.services.map((s) => `- ${s.type}: ${dayLabel(s.day)} ${s.times.join(" & ").replace(/:/g, ".")}${s.note?.includes("·") ? ` (${s.note.split("·")[1].trim()})` : ""}`),
