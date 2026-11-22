@@ -7,6 +7,7 @@ export type ServiceGroup = {
   note?: string;
   day: Day;
   times: string[]; // "HH:MM", WIB
+  online?: boolean; // online-only: kept out of the building's opening hours
 };
 
 export type Campus = {
@@ -35,7 +36,7 @@ export const campuses: Campus[] = [
       { type: "Ibadah Raya 2", note: "Minggu", day: "Sunday", times: ["16:30"] },
       { type: "Sekolah Minggu", note: "Minggu", day: "Sunday", times: ["10:00"] },
       { type: "Worship Night", note: "Rabu · Offline + live YouTube & Instagram", day: "Wednesday", times: ["19:00"] },
-      { type: "Doa Fajar", note: "Sabtu · Online via Zoom", day: "Saturday", times: ["05:00"] },
+      { type: "Doa Fajar", note: "Sabtu · Online via Zoom", day: "Saturday", times: ["05:00"], online: true },
     ],
   },
 ];

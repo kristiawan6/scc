@@ -15,7 +15,7 @@ export function churchJsonLd() {
       postalCode: c.postal.postalCode,
       addressCountry: "ID",
     },
-    openingHoursSpecification: c.services.flatMap((s) =>
+    openingHoursSpecification: c.services.filter((s) => !s.online).flatMap((s) =>
       s.times.map((t) => ({
         "@type": "OpeningHoursSpecification",
         name: s.type,

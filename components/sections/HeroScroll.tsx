@@ -2,7 +2,6 @@
 
 import { motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
-import BlurText from "../reactbits/BlurText";
 import LightRays from "../reactbits/LightRays";
 import { HeroVideo } from "./HeroVideo";
 
@@ -77,16 +76,20 @@ export function HeroScroll({ lines, src, poster }: { lines: string[]; src: strin
           style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
           className="display relative mt-[18vh] px-4 text-center text-[clamp(2.75rem,7.8vw,9rem)] sm:mt-[16vh]"
         >
-          {lines.map((line) => (
-            <BlurText
-              key={line}
-              text={line}
-              trigger="load"
-              direction="bottom"
-              delay={140}
-              stepDuration={0.45}
-              className="justify-center pb-[0.08em]"
-            />
+          {lines.map((line, i) => (
+            <span key={line} className="block pb-[0.08em]">
+              {line.split(" ").map((word, j, all) => (
+                <span key={j}>
+                  <span
+                    className="blur-in inline-block"
+                    style={{ animationDelay: `${150 + (i * 3 + j) * 130}ms` }}
+                  >
+                    {word}
+                  </span>
+                  {j < all.length - 1 && " "}
+                </span>
+              ))}
+            </span>
           ))}
         </motion.h1>
         <motion.div
