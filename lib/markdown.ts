@@ -46,7 +46,7 @@ ${contact()}`,
   about: {
     path: "/about",
     title: "Tentang Kami",
-    body: () => `Shalom, selamat datang di ${site.name}.
+    body: () => `Shalom, selamat datang di ${site.name}, yang juga dikenal sebagai ${site.alternateNames[0]}.
 
 ${site.story}
 

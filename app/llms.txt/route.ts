@@ -17,7 +17,7 @@ export function GET() {
   const body = [
     `# ${site.name}`,
     "",
-    `> ${site.name} (GBI SCC) adalah gereja di ${site.address.join(", ")}. ${site.story} ${site.pastors.map((p) => `${p.role}: ${p.name}.`).join(" ")}`,
+    `> ${site.name} (dikenal juga sebagai ${site.alternateNames.join(", ")}) adalah gereja di ${site.address.join(", ")}. ${site.story} ${site.pastors.map((p) => `${p.role}: ${p.name}.`).join(" ")}`,
     "",
     "Jadwal ibadah (WIB):",
     ...main.services.map((s) => `- ${s.type}: ${dayLabel(s.day)} ${s.times.join(" & ").replace(/:/g, ".")}${s.note?.includes("·") ? ` (${s.note.split("·")[1].trim()})` : ""}`),

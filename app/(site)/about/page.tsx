@@ -21,7 +21,9 @@ export default function AboutPage() {
     <>
       <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="About">
-        <p>Shalom, selamat datang di {site.name}.</p>
+        <p>
+          Shalom, selamat datang di {site.name}, yang juga dikenal sebagai {site.alternateNames[0]}.
+        </p>
         <p className="mt-4">{site.story}</p>
       </PageHeader>
       <OurStory showLink={false} />

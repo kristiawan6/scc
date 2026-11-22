@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "religion",
   keywords: [
-    "GBI Soho City Church", "GBI SCC", "gereja Jakarta Selatan", "gereja Pancoran", "gereja Tebet",
+    "GBI Soho City Church", ...site.alternateNames, "GBI Pancoran", "gereja Jakarta Selatan", "gereja Pancoran", "gereja Tebet",
     "SOHO Pancoran", "ibadah Minggu Jakarta Selatan", "Worship Night Jakarta", "Sekolah Minggu Jakarta Selatan", "GBI Rayon 1i",
   ],
   manifest: "/manifest.json",

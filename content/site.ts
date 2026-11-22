@@ -6,10 +6,12 @@ export type Social = {
 export const site = {
   name: "GBI Soho City Church",
   shortName: "Soho City Church",
+  // Other names people search for (Facebook page uses "GBI Soho Pancoran").
+  alternateNames: ["GBI Soho Pancoran", "GBI SCC", "Soho City Church"],
   url: "https://gbiscc.org",
   tagline: ["See what God", "can do through you."],
   description:
-    "GBI Soho City Church (SCC) di SOHO Pancoran, Jakarta Selatan. Ibadah setiap Minggu, Worship Night setiap Rabu, dan komunitas untuk bertumbuh bersama.",
+    "GBI Soho City Church (GBI Soho Pancoran) di SOHO Pancoran, Jakarta Selatan. Ibadah Minggu, Worship Night setiap Rabu, dan komunitas untuk bertumbuh bersama.",
   email: "info@gbiscc.org",
   phone: { label: "Pdt. Danny Setiawan", number: "0812 1056 030", tel: "+628121056030" },
   address: [
