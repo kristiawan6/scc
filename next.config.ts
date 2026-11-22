@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone", // Docker image runs .next/standalone/server.js (see Dockerfile)
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },

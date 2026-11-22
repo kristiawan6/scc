@@ -1,0 +1,12 @@
+**/node_modules
+.next
+.git
+.env*
+!.env.example
+**/.env*
+!**/.env.example
+api/uploads
+deploy
+.playwright-mcp
+.remember
+*.tsbuildinfo
