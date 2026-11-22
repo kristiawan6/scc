@@ -68,7 +68,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pb-36 pt-6 text-sm lg:pb-8">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pb-36 pt-6 text-sm lg:pb-8 lg:pr-20">
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
