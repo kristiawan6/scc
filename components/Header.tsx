@@ -19,7 +19,7 @@ export function Header() {
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-4 py-4 sm:px-8">
         <Link href="/" className="pointer-events-auto flex items-center gap-3" aria-label={`${site.name}, beranda`}>
-          <Image src="/scc-mark.png" alt="" width={40} height={45} priority className="h-11 w-auto" />
+          <Image src="/scc-mark.png" alt={`Logo ${site.name}`} width={40} height={45} priority className="h-11 w-auto" />
         </Link>
         <button
           type="button"

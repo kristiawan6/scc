@@ -52,5 +52,11 @@ export const onlineService = {
   ],
 };
 
+const DAY: Record<Day, string> = { Sunday: "Minggu", Wednesday: "Rabu", Saturday: "Sabtu" };
+export const dayLabel = (d: Day) => DAY[d];
+/** "10.00 & 16.30" for a service type at the main location. */
+export const timesOf = (type: string) =>
+  (campuses[0].services.find((s) => s.type === type)?.times ?? []).map((t) => t.replace(":", ".")).join(" & ");
+
 export const mapEmbed = (q: string) =>
   `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;

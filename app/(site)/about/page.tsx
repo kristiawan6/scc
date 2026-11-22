@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/PageHeader";
 import { Ministries } from "@/components/sections/Ministries";
 import { OurStory } from "@/components/sections/OurStory";
 import { site } from "@/content/site";
 import { wrap } from "@/lib/ui";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Cerita, visi, misi, dan kepemimpinan GBI Soho City Church di SOHO Pancoran, Jakarta Selatan.",
-  alternates: { canonical: "/about" },
+const meta = {
+  title: "Tentang Kami: Visi, Misi & Gembala | GBI Soho City Church",
+  crumb: "Tentang Kami",
+  description: "Cerita, visi, misi, dan para gembala GBI Soho City Church, gereja GBI Rayon 1i yang melayani sejak 2018 di SOHO Pancoran, Jakarta Selatan.",
+  path: "/about",
 };
+export const metadata: Metadata = pageMeta(meta);
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="About">
         <p>Shalom, selamat datang di {site.name}.</p>
         <p className="mt-4">{site.story}</p>
@@ -26,16 +32,13 @@ export default function AboutPage() {
           </h2>
           <ul className="mt-12 grid gap-6 sm:grid-cols-2">
             {site.pastors.map((p) => (
-              <li key={p.name} className="rounded-[1.5rem] p-8 ring-1 ring-ink/12">
+              <li key={p.name} id={p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")} className="rounded-[1.5rem] p-8 ring-1 ring-ink/12">
                 <p className="font-script text-4xl leading-none">{p.name}</p>
                 <p className="mt-3 text-sm text-stone">{p.role}</p>
               </li>
             ))}
           </ul>
-          <p className="mt-10 max-w-2xl leading-relaxed text-stone">
-            Lebih dari 7 tahun, pelayanan GBI SCC bergerak dari ibadah raya setiap minggu ke pelayanan sosial: berbagi
-            makanan bagi yang membutuhkan, pelayanan panti asuhan, dan bakti sosial potong rambut gratis.
-          </p>
+          <p className="mt-10 max-w-2xl leading-relaxed text-stone">{site.outreach}</p>
         </div>
       </section>
       <Ministries />

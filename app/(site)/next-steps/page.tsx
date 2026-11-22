@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
@@ -6,15 +9,18 @@ import { Reveal } from "@/components/Reveal";
 import { nextSteps } from "@/content/next-steps";
 import { btnDark, wrap } from "@/lib/ui";
 
-export const metadata: Metadata = {
-  title: "Next Steps",
+const meta = {
+  title: "Next Steps: COOL & Growth in Christ | GBI Soho City Church",
+  crumb: "Next Steps",
   description: "Baru di GBI Soho City Church? Mulai dari sini: kenal Yesus, gabung COOL, kelas Growth in Christ, dan melayani.",
-  alternates: { canonical: "/next-steps" },
+  path: "/next-steps",
 };
+export const metadata: Metadata = pageMeta(meta);
 
 export default function NextStepsPage() {
   return (
     <>
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="Next Steps">
         <p>Di mana pun kamu sekarang dalam perjalanan iman, selalu ada langkah berikutnya. Kami jalan bersamamu.</p>
       </PageHeader>

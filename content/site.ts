@@ -36,11 +36,18 @@ export const site = {
     { name: "GBI Jl. Gatot Subroto", href: "" },
     { name: "GBI Rayon 1i", href: "" },
   ],
+  founded: "2018",
+  // First publish date of this website (fixed). Used as datePublished in structured data.
+  launched: "2026-11-22",
+  // Last content review; shown on pages and used as dateModified in structured data. Bump when content changes.
+  updated: "2026-11-22",
   vision: "Menjadi saksi Kristus di era pentakosta ketiga.",
   mission:
     "Berlandaskan 5 pesan Tuhan dalam pelayanan rohani, kami membangun karakter jemaat agar bertumbuh serupa Kristus dan hidup dalam kasih.",
   story:
     "GBI SCC mulai melayani pada tahun 2018 di gedung SOHO Pancoran, Jakarta Selatan. Kami adalah bagian dari GBI Rayon 1i, di bawah naungan GBI Jl. Gatot Subroto yang digembalakan Pdt. Dr. Ir. Niko Njotorahardjo.",
+  outreach:
+    "Lebih dari 7 tahun, pelayanan GBI SCC bergerak dari ibadah raya setiap minggu ke pelayanan sosial: berbagi makanan bagi yang membutuhkan, pelayanan panti asuhan, dan bakti sosial potong rambut gratis.",
   pastors: [
     { name: "Ps. Herron Dollf Anton", role: "Senior Pastor" },
     { name: "Ps. Danny Setiawan", role: "Associate Pastor" },

@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import { site } from "@/content/site";
+import { markdownSlug } from "./markdown";
+import { img } from "./placeholders";
+
+export const ogImage = { url: img.og, width: 1200, height: 630, alt: "Foto bersama jemaat GBI Soho City Church" };
+
+/** Per-page metadata. Next replaces (not merges) openGraph per page, so every page sets the full set here. */
+export function pageMeta({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+  return {
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: path,
+      // Advertise the Markdown copy to AI agents.
+      ...(markdownSlug(path) && { types: { "text/markdown": `/${markdownSlug(path)}.md` } }),
+    },
+    openGraph: { type: "website", locale: "id_ID", siteName: site.name, url: path, title, description, images: [ogImage] },
+    twitter: { card: "summary_large_image", title, description, images: [img.og] },
+  };
+}
