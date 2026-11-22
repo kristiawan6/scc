@@ -2,10 +2,16 @@
 # Run from the repo root:  docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 name: scc
 
+# Cap Docker's json-file logs so months of request logs can't fill the disk.
+x-logging: &logging
+  driver: json-file
+  options: { max-size: 10m, max-file: "3" }
+
 services:
   caddy:
     image: caddy:2.10-alpine
     restart: unless-stopped
+    logging: *logging
     ports: ["80:80", "443:443", "443:443/udp"]
     environment:
       DOMAIN: ${DOMAIN:?set DOMAIN in deploy/.env}
@@ -24,12 +30,14 @@ services:
       args:
         NEXT_PUBLIC_API_URL: https://api.${DOMAIN}
     restart: unless-stopped
+    logging: *logging
 
   api:
     build:
       context: ..
       dockerfile: api/Dockerfile
     restart: unless-stopped
+    logging: *logging
     environment:
       FRONTEND_URL: https://${DOMAIN},https://www.${DOMAIN}
       API_PUBLIC_URL: https://api.${DOMAIN}
@@ -52,9 +60,12 @@ services:
   postgres:
     image: postgres:17-alpine
     restart: unless-stopped
+    logging: *logging
     environment:
       POSTGRES_DB: scc
       POSTGRES_USER: scc
+      # Only read when pgdata is first created. To rotate later, also run
+      # ALTER USER scc PASSWORD '...' inside this container.
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -66,6 +77,7 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
+    logging: *logging
     command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}", "--appendonly", "yes"]
     volumes:
       - redisdata:/data
@@ -80,7 +92,10 @@ networks:
   default:
     ipam:
       config:
+        # If this overlaps an existing network on the server, change it together with
+        # caddy's ipv4_address and the API's TRUSTED_PROXIES.
         - subnet: 172.30.0.0/24
+          ip_range: 172.30.0.128/25 # dynamic IPs stay in .128-.254, so caddy's fixed .10 is never taken
 
 volumes:
   caddy_data:
