@@ -33,10 +33,10 @@ export default function ContactPage() {
                     {l}
                   </span>
                 ))}
-                <a href={`tel:${site.phone.tel}`} className="mt-3 block text-ink underline-offset-4 hover:underline">
+                <a href={`tel:${site.phone.tel}`} className="mt-1 block py-2.5 text-ink underline-offset-4 hover:underline">
                   {site.phone.number} ({site.phone.label})
                 </a>
-                <a href={`mailto:${site.email}`} className="block text-ink underline-offset-4 hover:underline">
+                <a href={`mailto:${site.email}`} className="block py-2.5 text-ink underline-offset-4 hover:underline">
                   {site.email}
                 </a>
               </address>

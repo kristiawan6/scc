@@ -9,17 +9,17 @@ const tip =
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-4 right-4 z-30 flex flex-col gap-2 sm:bottom-6 sm:right-6">
+    <nav aria-label="Pintasan" className="fixed bottom-4 right-4 z-30 flex flex-col gap-2 sm:bottom-6 sm:right-6">
       <Link href={site.links.member} className={btn}>
         <UserRound aria-hidden="true" className="size-5" />
-        <span className={tip}>Member</span>
+        <span aria-hidden="true" className={tip}>Member</span>
         <span className="sr-only">Member</span>
       </Link>
       <a href={site.links.devotional} target="_blank" rel="noopener noreferrer" className={btn}>
         <BookOpen aria-hidden="true" className="size-5" />
-        <span className={tip}>Alkitab & renungan</span>
+        <span aria-hidden="true" className={tip}>Alkitab & renungan</span>
         <span className="sr-only">Alkitab dan renungan (tab baru)</span>
       </a>
-    </div>
+    </nav>
   );
 }

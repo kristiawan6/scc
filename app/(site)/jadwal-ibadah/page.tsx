@@ -35,7 +35,10 @@ export default function JadwalPage() {
           Terakhir diperbarui <time dateTime={site.updated}>{updatedLabel}</time>
         </p>
       </PageHeader>
-      <section id="jadwal" aria-label="Lokasi dan jadwal" className="scroll-mt-24 bg-paper py-24 text-ink sm:py-32">
+      <section id="jadwal" aria-labelledby="lokasi-title" className="scroll-mt-24 bg-paper py-24 text-ink sm:py-32">
+        <h2 id="lokasi-title" className="sr-only">
+          Lokasi dan jadwal
+        </h2>
         <div className={`${wrap} space-y-6`}>
           {campuses.map((c) => (
             <div key={c.slug} className="grid gap-6 lg:grid-cols-2">
