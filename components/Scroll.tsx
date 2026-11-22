@@ -49,7 +49,7 @@ export function RevealLines({
       viewport={{ once: true, margin: "-8% 0px" }}
     >
       {lines.map((text, i) => (
-        <span key={text} className="block -mb-[0.12em] overflow-hidden pb-[0.18em]">
+        <span key={text} className="block -mx-[0.1em] -mb-[0.12em] -mt-[0.1em] overflow-hidden px-[0.1em] pb-[0.18em] pt-[0.1em]">
           <motion.span className="block" variants={line} custom={i}>
             {text}
           </motion.span>

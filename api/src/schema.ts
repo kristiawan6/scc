@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { Field } from "../../lib/cms";
 import { sanitizeHtml } from "./sanitize";
 
-// Absolute http(s) URL or a site-relative path ("/campuses#jadwal").
+// Absolute http(s) URL or a site-relative path ("/jadwal-ibadah#jadwal").
 const link = z.string().trim().max(500).regex(/^(https?:\/\/|\/(?![\/\\])|#)/, "Gunakan URL http(s) atau path yang diawali /");
 
 function fieldSchema(f: Field): z.ZodType {

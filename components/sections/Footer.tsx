@@ -1,32 +1,9 @@
 import Link from "next/link";
-import { siAppstore, siGoogleplay } from "simple-icons";
 import { site } from "@/content/site";
 import { btn, wrap } from "@/lib/ui";
 import { RevealLines } from "../Scroll";
 
 const heading = "text-sm font-semibold text-paper";
-
-function StoreBadge({ label, href, path }: { label: string; href: string; path: string }) {
-  const inner = (
-    <>
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5" fill="currentColor">
-        <path d={path} />
-      </svg>
-      <span className="leading-tight">
-        <span className="block text-[0.7rem] text-smoke">{href ? "Download di" : "Segera hadir di"}</span>
-        <span className="block font-semibold">{label}</span>
-      </span>
-    </>
-  );
-  const cls = "inline-flex items-center gap-3 rounded-xl px-4 py-2.5 ring-1";
-  return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={`${cls} ring-white/20 hover:ring-gold`}>
-      {inner}
-    </a>
-  ) : (
-    <span className={`${cls} ring-white/10`}>{inner}</span>
-  );
-}
 
 export function Footer() {
   return (
@@ -42,7 +19,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="mt-20 grid gap-10 border-t border-white/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-10 border-t border-white/10 pt-12 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <h3 className={heading}>Office</h3>
             <address className="mt-4 space-y-1 not-italic leading-relaxed">
@@ -88,13 +65,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h3 className={heading}>Download our app</h3>
-            <div className="mt-4 flex flex-col items-start gap-3">
-              <StoreBadge label="App Store" href={site.apps.appStore} path={siAppstore.path} />
-              <StoreBadge label="Google Play" href={site.apps.playStore} path={siGoogleplay.path} />
-            </div>
           </div>
         </div>
 

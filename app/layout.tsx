@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: site.url,
     title: site.name,
     description: site.description,
-    images: [{ url: img.og, width: 1200, height: 630, alt: "Jemaat beribadah di GBI Soho City Church" }],
+    images: [{ url: img.og, width: 1200, height: 630, alt: "Foto bersama jemaat GBI Soho City Church" }],
   },
   twitter: { card: "summary_large_image", title: site.name, description: site.description, images: [img.og] },
   manifest: "/manifest.json",

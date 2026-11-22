@@ -63,7 +63,7 @@ All copy and data live in typed files. Components never need to change for a con
 | What | File |
 | --- | --- |
 | Church name, tagline, address, phone, socials, vision/mission, pastors, menu, partners, app links | `content/site.ts` |
-| Campuses, service times, map location | `content/campuses.ts` |
+| Service times, location, map | `content/campuses.ts` |
 | "What's New" carousel (6 cards) | `content/highlights.ts` |
 | Ministries (4 items) | `content/ministries.ts` |
 | Next steps (`featured: true` shows on the homepage) | `content/next-steps.ts` |
@@ -76,8 +76,8 @@ All copy and data live in typed files. Components never need to change for a con
 
 ## Pages
 
-`/` · `/about` · `/campuses` · `/next-steps` · `/contact` · `/privacy`
-Old URLs (`/tentang`, `/jadwal-ibadah`, `/komunitas`) 301-redirect to the new ones.
+`/` · `/about` · `/jadwal-ibadah` · `/next-steps` · `/contact` · `/privacy`
+Old URLs (`/tentang`, `/komunitas`, `/campuses`) 301-redirect to the new ones.
 
 The contact form still opens the visitor's mail app (`components/ContactForm.tsx`). `POST /contact` on the API is ready, and messages show up in the CMS inbox once the form posts there.
 

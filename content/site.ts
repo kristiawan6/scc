@@ -31,7 +31,7 @@ export const site = {
     devotional: "https://www.bible.com/id",
     give: "/contact#give",
   },
-  apps: { appStore: "", playStore: "" }, // empty = "Segera hadir"
+  seasonal: { snow: true }, // Christmas snowfall; set false after the season
   partners: [
     { name: "GBI Jl. Gatot Subroto", href: "" },
     { name: "GBI Rayon 1i", href: "" },
@@ -47,8 +47,7 @@ export const site = {
   ],
   nav: [
     { label: "About", href: "/about" },
-    { label: "Campuses", href: "/campuses" },
-    { label: "Services", href: "/campuses#jadwal" },
+    { label: "Jadwal Ibadah", href: "/jadwal-ibadah" },
     { label: "Next Steps", href: "/next-steps" },
     { label: "Ministries", href: "/#ministries" },
     { label: "Give", href: "/contact#give" },
