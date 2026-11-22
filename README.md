@@ -85,3 +85,18 @@ The contact form still opens the visitor's mail app (`components/ContactForm.tsx
 
 - Website: any Node host. Vercel: framework "Next.js", install `bun install`, build `bun run build`, env `NEXT_PUBLIC_API_URL`. Self-hosted: `bun run build && bun run start`.
 - API: `bun install && bun run db:migrate && bun run start:api` with `api/.env` set. Put it behind a reverse proxy on the same site as the website (e.g. `api.gbiscc.org`).
+
+## Production (gbiscc.org)
+
+Docker Compose on any Linux server with Docker: Caddy (automatic HTTPS) → `web` at `gbiscc.org` and `api` at `api.gbiscc.org`, plus Postgres and Redis. Files: `Dockerfile`, `api/Dockerfile`, `deploy/`.
+
+1. DNS: `A` records for `gbiscc.org`, `www.gbiscc.org` and `api.gbiscc.org` → the server IP. Open ports 80 and 443.
+2. On the server: `git clone` this repo, then `cp deploy/.env.example deploy/.env` and fill it (`openssl rand -hex 32` for each secret).
+3. Start: `docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build`
+   Migrations run automatically when the API starts.
+4. First time only:
+   - `docker compose -f deploy/docker-compose.yml --env-file deploy/.env exec api bun scripts/seed.ts` (load the current content into the CMS)
+   - `docker compose -f deploy/docker-compose.yml --env-file deploy/.env exec api bun scripts/create-admin.ts you@example.com "Your Name"`
+5. Update: `git pull`, then step 3 again.
+
+Uploads live in the `uploads` volume, the database in `pgdata`. Back up both.
