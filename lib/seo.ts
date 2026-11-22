@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { markdownSlug } from "./markdown";
 import { img } from "./placeholders";
 
 const og = { url: img.og, width: 1200, height: 630, alt: "Foto bersama jemaat GBI Soho City Church" };
@@ -9,7 +10,11 @@ export function pageMeta({ title, description, path }: { title: string; descript
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      // Advertise the Markdown copy to AI agents.
+      ...(markdownSlug(path) && { types: { "text/markdown": `/${markdownSlug(path)}.md` } }),
+    },
     openGraph: { type: "website", locale: "id_ID", siteName: site.name, url: path, title, description, images: [og] },
     twitter: { card: "summary_large_image", title, description, images: [img.og] },
   };

@@ -20,7 +20,11 @@ const nextConfig: NextConfig = {
   // /campuses is served (not redirected) because an earlier build 308'd /jadwal-ibadah -> /campuses;
   // browsers that cached that would loop if /campuses redirected back. Canonical is /jadwal-ibadah.
   async rewrites() {
-    return [{ source: "/campuses", destination: "/jadwal-ibadah" }];
+    return [
+      { source: "/campuses", destination: "/jadwal-ibadah" },
+      // Markdown copies for AI agents: /index.md, /about.md, /jadwal-ibadah.md, ...
+      { source: "/:slug.md", destination: "/md/:slug" },
+    ];
   },
 };
 

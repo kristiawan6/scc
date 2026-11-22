@@ -37,10 +37,7 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-10 max-w-2xl leading-relaxed text-stone">
-            Lebih dari 7 tahun, pelayanan GBI SCC bergerak dari ibadah raya setiap minggu ke pelayanan sosial: berbagi
-            makanan bagi yang membutuhkan, pelayanan panti asuhan, dan bakti sosial potong rambut gratis.
-          </p>
+          <p className="mt-10 max-w-2xl leading-relaxed text-stone">{site.outreach}</p>
         </div>
       </section>
       <Ministries />
