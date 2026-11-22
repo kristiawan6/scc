@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageJsonLd } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHeader } from "@/components/PageHeader";
 import { site } from "@/content/site";
 import { wrap } from "@/lib/ui";
 
-export const metadata: Metadata = {
-  title: "Contact",
+const meta = {
+  title: "Kontak, Permohonan Doa & Persembahan | GBI Soho City Church",
   description: "Hubungi GBI Soho City Church untuk pertanyaan, permohonan doa, atau informasi persembahan.",
-  alternates: { canonical: "/contact" },
+  path: "/contact",
 };
+export const metadata: Metadata = pageMeta(meta);
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, description: meta.description })} />
       <PageHeader title="Contact">
         <p>Tulis pesanmu, dan tim kami akan membalas secepatnya.</p>
       </PageHeader>

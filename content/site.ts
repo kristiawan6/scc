@@ -36,6 +36,9 @@ export const site = {
     { name: "GBI Jl. Gatot Subroto", href: "" },
     { name: "GBI Rayon 1i", href: "" },
   ],
+  founded: "2018",
+  // Last content review; shown on pages and used as dateModified in structured data. Bump when content changes.
+  updated: "2026-11-22",
   vision: "Menjadi saksi Kristus di era pentakosta ketiga.",
   mission:
     "Berlandaskan 5 pesan Tuhan dalam pelayanan rohani, kami membangun karakter jemaat agar bertumbuh serupa Kristus dan hidup dalam kasih.",

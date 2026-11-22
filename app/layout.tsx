@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Caveat, Epilogue, Inter } from "next/font/google";
 import { site } from "@/content/site";
 import { churchJsonLd, toScript } from "@/lib/jsonld";
-import { img } from "@/lib/placeholders";
+import { pageMeta } from "@/lib/seo";
 import "./globals.css";
 
 const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-epilogue" });
@@ -11,20 +11,16 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-c
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} | Jakarta`, template: `%s | ${site.shortName}` },
-  description: site.description,
-  keywords: ["GBI Soho City Church", "GBI SCC", "gereja Jakarta Selatan", "gereja Pancoran", "SOHO Pancoran", "ibadah Minggu Jakarta"],
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "id_ID",
-    siteName: site.shortName,
-    url: site.url,
-    title: site.name,
-    description: site.description,
-    images: [{ url: img.og, width: 1200, height: 630, alt: "Foto bersama jemaat GBI Soho City Church" }],
-  },
-  twitter: { card: "summary_large_image", title: site.name, description: site.description, images: [img.og] },
+  ...pageMeta({ title: `${site.name} | Gereja di Pancoran, Jakarta Selatan`, description: site.description, path: "/" }),
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "religion",
+  keywords: [
+    "GBI Soho City Church", "GBI SCC", "gereja Jakarta Selatan", "gereja Pancoran", "gereja Tebet",
+    "SOHO Pancoran", "ibadah Minggu Jakarta Selatan", "Worship Night Jakarta", "Sekolah Minggu Jakarta Selatan", "GBI Rayon 1i",
+  ],
   manifest: "/manifest.json",
 };
 

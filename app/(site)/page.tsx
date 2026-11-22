@@ -1,3 +1,6 @@
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/content/site";
+import { pageJsonLd } from "@/lib/jsonld";
 import { Campuses } from "@/components/sections/Campuses";
 import { Hero } from "@/components/sections/Hero";
 import { Ministries } from "@/components/sections/Ministries";
@@ -9,6 +12,7 @@ import { WhatsNew } from "@/components/sections/WhatsNew";
 export default function Home() {
   return (
     <>
+      <JsonLd data={pageJsonLd({ path: "/", name: site.name, description: site.description })} />
       <Hero />
       <WhatsNew />
       <OurStory />

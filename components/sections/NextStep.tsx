@@ -28,7 +28,7 @@ export function NextStep() {
                     <ClipReveal className="absolute inset-0">
                       <Image
                         src={s.image}
-                        alt=""
+                        alt={s.alt}
                         fill
                         sizes="(min-width: 1024px) 45vw, 100vw"
                         className="object-cover opacity-45 grayscale transition duration-700 group-hover:scale-105 group-hover:opacity-60"
