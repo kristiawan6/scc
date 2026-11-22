@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Caveat, Epilogue, Inter } from "next/font/google";
-import { site } from "@/content/site";
+import { alternateNames, site } from "@/content/site";
 import { churchJsonLd, toScript } from "@/lib/jsonld";
 import { ogImage } from "@/lib/seo";
 import "./globals.css";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "religion",
   keywords: [
-    "GBI Soho City Church", ...site.alternateNames, "GBI Pancoran", "gereja Jakarta Selatan", "gereja Pancoran", "gereja Tebet",
+    "GBI Soho City Church", ...alternateNames, "gereja Jakarta Selatan", "gereja Pancoran", "gereja Tebet",
     "SOHO Pancoran", "ibadah Minggu Jakarta Selatan", "Worship Night Jakarta", "Sekolah Minggu Jakarta Selatan", "GBI Rayon 1i",
   ],
   manifest: "/manifest.json",

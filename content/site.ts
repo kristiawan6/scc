@@ -6,12 +6,14 @@ export type Social = {
 export const site = {
   name: "GBI Soho City Church",
   shortName: "Soho City Church",
-  // Other names people search for (Facebook page uses "GBI Soho Pancoran").
-  alternateNames: ["GBI Soho Pancoran", "GBI SCC", "Soho City Church"],
+  // Name the congregation is also known by (used in local listings and social media).
+  localName: "GBI Soho Pancoran",
+  // Extra search names; shortName and localName are added where this is used.
+  otherNames: ["GBI SCC"],
   url: "https://gbiscc.org",
   tagline: ["See what God", "can do through you."],
   description:
-    "GBI Soho City Church (GBI Soho Pancoran) di SOHO Pancoran, Jakarta Selatan. Ibadah Minggu, Worship Night setiap Rabu, dan komunitas untuk bertumbuh bersama.",
+    "GBI Soho City Church (SCC), dikenal juga sebagai GBI Soho Pancoran, di Jakarta Selatan. Ibadah setiap Minggu, Worship Night setiap Rabu, dan komunitas bertumbuh.",
   email: "info@gbiscc.org",
   phone: { label: "Pdt. Danny Setiawan", number: "0812 1056 030", tel: "+628121056030" },
   address: [
@@ -63,3 +65,6 @@ export const site = {
     { label: "Contact", href: "/contact" },
   ],
 };
+
+/** Every alternate name, in one place: short name, local name, then other search names. */
+export const alternateNames = [site.shortName, site.localName, ...site.otherNames];
