@@ -2,7 +2,7 @@ import { campuses } from "@/content/campuses";
 import { site } from "@/content/site";
 import { img } from "./placeholders";
 
-// schema.org "Church" with every campus address and service time.
+// schema.org "Church" with the church address and service time.
 export function churchJsonLd() {
   const branches = campuses.map((c) => ({
     "@type": "Church",
@@ -15,7 +15,7 @@ export function churchJsonLd() {
       postalCode: c.postal.postalCode,
       addressCountry: "ID",
     },
-    openingHoursSpecification: c.services.flatMap((s) =>
+    openingHoursSpecification: c.services.filter((s) => !s.online).flatMap((s) =>
       s.times.map((t) => ({
         "@type": "OpeningHoursSpecification",
         name: s.type,
@@ -33,7 +33,7 @@ export function churchJsonLd() {
     alternateName: site.shortName,
     url: site.url,
     logo: `${site.url}/icon.png`,
-    image: img.og,
+    image: `${site.url}${img.og}`,
     description: site.description,
     email: site.email,
     telephone: site.phone.tel,

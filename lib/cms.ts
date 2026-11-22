@@ -37,7 +37,7 @@ export const collections: Collection[] = [
     fields: [
       ...image("16/10"),
       { key: "title", label: "Judul", type: "text", required: true, max: 90, variant: "lead" },
-      { key: "href", label: "Tautan", type: "url", required: true, hint: "Halaman tujuan saat kartu diklik, misalnya /campuses#jadwal." },
+      { key: "href", label: "Tautan", type: "url", required: true, hint: "Halaman tujuan saat kartu diklik, misalnya /jadwal-ibadah#jadwal." },
     ],
   },
   {
@@ -67,11 +67,11 @@ export const collections: Collection[] = [
   },
   {
     slug: "campuses",
-    label: "Campuses",
+    label: "Jadwal & Lokasi",
     titleKey: "name",
     tone: "paper",
     fields: [
-      { key: "name", label: "Nama campus", type: "text", required: true, max: 60, variant: "title" },
+      { key: "name", label: "Nama lokasi", type: "text", required: true, max: 60, variant: "title" },
       { key: "slug", label: "ID tautan", type: "text", required: true, max: 40 },
       { key: "address", label: "Alamat (satu baris per item)", type: "list" },
       { key: "mapQuery", label: "Kata kunci Google Maps", type: "text", required: true, max: 200 },

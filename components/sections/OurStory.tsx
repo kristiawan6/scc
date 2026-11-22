@@ -4,7 +4,9 @@ import { site } from "@/content/site";
 import { img } from "@/lib/placeholders";
 import { btn, wrap } from "@/lib/ui";
 import { Reveal } from "../Reveal";
-import { ClipReveal, RevealLines, ScrollMarquee } from "../Scroll";
+import ShinyText from "../reactbits/ShinyText";
+import TiltedCard from "../reactbits/TiltedCard";
+import { RevealLines, ScrollMarquee } from "../Scroll";
 
 export function OurStory({ showLink = true }: { showLink?: boolean }) {
   const [senior] = site.pastors;
@@ -19,18 +21,30 @@ export function OurStory({ showLink = true }: { showLink?: boolean }) {
           className="display text-outline absolute inset-x-0 top-[38%] -translate-y-1/2 text-[clamp(7rem,24vw,22rem)]"
         />
         <Reveal className="relative mx-auto w-[min(78vw,26rem)]">
-          <ClipReveal className="relative aspect-[4/5] rounded-[1.5rem] bg-ink-2">
-              <Image
-                src={img.pastor}
-                alt={`Foto ${senior.name}`}
-                fill
-                sizes="(min-width: 640px) 26rem, 78vw"
-                className="object-cover grayscale"
-              />
-          </ClipReveal>
-          <div className="relative -mt-9 text-center">
+          <TiltedCard
+            containerHeight="auto"
+            imageWidth="100%"
+            imageHeight="100%"
+            radius="1.5rem"
+            rotateAmplitude={10}
+            showTooltip={false}
+            gyroscope={false}
+            intro={false}
+            style={{ aspectRatio: "4 / 5" }}
+          >
+            <Image
+              src={img.pastor}
+              alt={`Foto ${senior.name}`}
+              fill
+              sizes="(min-width: 640px) 26rem, 78vw"
+              className="pointer-events-none object-cover grayscale"
+            />
+          </TiltedCard>
+          <div className="relative z-10 -mt-9 text-center">
             <p className="font-script text-[clamp(2.5rem,7vw,3.75rem)] leading-none text-paper">{senior.name}</p>
-            <p className="mt-3 text-xs font-medium tracking-[0.25em] text-gold">— SENIOR PASTOR</p>
+            <p className="mt-3 text-xs font-medium tracking-[0.25em]">
+              <ShinyText text="— SENIOR PASTOR" color="#c9a227" shineColor="#fff4c2" speed={2.5} delay={1.5} />
+            </p>
           </div>
         </Reveal>
       </div>

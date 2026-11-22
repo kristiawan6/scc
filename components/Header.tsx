@@ -55,13 +55,13 @@ export function Header() {
             </button>
           </div>
           <nav aria-label="Utama" className="flex flex-1 items-center">
-            <ul className="space-y-1">
+            <ul className="space-y-3 sm:space-y-4">
               {site.nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={() => menu.current?.close()}
-                    className="display block text-[clamp(2.75rem,9vw,6.5rem)] text-paper/90 transition-colors hover:text-gold"
+                    className="display block py-1 text-[clamp(2.25rem,min(8vw,8.5vh),5.5rem)] leading-[1.05] text-paper/90 transition-colors hover:text-gold"
                   >
                     {item.label}
                   </Link>

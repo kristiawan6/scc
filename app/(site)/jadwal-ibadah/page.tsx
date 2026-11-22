@@ -5,15 +5,15 @@ import { campuses, mapEmbed } from "@/content/campuses";
 import { wrap } from "@/lib/ui";
 
 export const metadata: Metadata = {
-  title: "Campuses & Jadwal Ibadah",
-  description: "Lokasi dan jadwal ibadah GBI Soho City Church: Ibadah Raya Minggu 10.00 & 16.30, Worship Night Rabu 19.00, Doa Fajar Sabtu 05.00.",
-  alternates: { canonical: "/campuses" },
+  title: "Jadwal Ibadah",
+  description: "Jadwal ibadah GBI Soho City Church di SOHO Pancoran: Ibadah Raya Minggu 10.00 & 16.30, Sekolah Minggu 10.00, Worship Night Rabu 19.00 (juga live YouTube & Instagram), Doa Fajar Sabtu 05.00 via Zoom.",
+  alternates: { canonical: "/jadwal-ibadah" },
 };
 
-export default function CampusesPage() {
+export default function JadwalPage() {
   return (
     <>
-      <PageHeader title="Campuses">
+      <PageHeader title="Jadwal Ibadah">
         <p>Datang dan beribadah bersama kami. Semua waktu dalam WIB.</p>
       </PageHeader>
       <section id="jadwal" aria-label="Lokasi dan jadwal" className="scroll-mt-24 bg-paper py-24 text-ink sm:py-32">

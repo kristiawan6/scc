@@ -48,10 +48,18 @@ export function OnlineCard() {
         <h3 className="display text-[clamp(2rem,4vw,3rem)]">{onlineService.name.toUpperCase()}</h3>
         <p className="mt-4 max-w-sm leading-relaxed text-smoke">{onlineService.body}</p>
       </div>
-      <div>
-        <a href={onlineService.href} target="_blank" rel="noopener noreferrer" className={btn}>
-          JOIN US
-        </a>
+      <div className="flex flex-wrap gap-3">
+        {onlineService.links.map((l) =>
+          l.external ? (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={btn}>
+              {l.label}
+            </a>
+          ) : (
+            <Link key={l.href} href={l.href} className={btn}>
+              {l.label}
+            </Link>
+          ),
+        )}
       </div>
     </article>
   );
@@ -59,12 +67,12 @@ export function OnlineCard() {
 
 export function Campuses() {
   return (
-    <section id="campuses" aria-labelledby="campuses-title" className="bg-paper py-24 text-ink sm:py-32">
+    <section id="jadwal" aria-labelledby="jadwal-title" className="bg-paper py-24 text-ink sm:py-32">
       <div className={wrap}>
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <RevealLines id="campuses-title" lines={["Campuses"]} className="display text-[clamp(2.5rem,6vw,5.5rem)]" />
-          <Link href="/campuses" className="text-sm font-semibold tracking-wide underline-offset-8 hover:underline">
-            VIEW ALL CAMPUSES
+          <RevealLines id="jadwal-title" lines={["Jadwal Ibadah"]} className="display text-[clamp(2.5rem,6vw,5.5rem)]" />
+          <Link href="/jadwal-ibadah" className="text-sm font-semibold tracking-wide underline-offset-8 hover:underline">
+            LIHAT LOKASI & PETA
           </Link>
         </div>
         <Reveal className="mt-12 grid gap-6 lg:grid-cols-[2fr_1fr]">

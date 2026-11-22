@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import LightRays from "../reactbits/LightRays";
 import { HeroVideo } from "./HeroVideo";
 
 // Pinned hero: while the visitor scrolls through ~1.5 screens, the video grows
@@ -56,17 +57,38 @@ export function HeroScroll({ lines, src, poster }: { lines: string[]; src: strin
   return (
     <section ref={ref} aria-labelledby="hero-title" className="relative h-[250vh] bg-ink">
       <div className="sticky top-0 flex h-dvh flex-col items-center overflow-hidden">
+        <LightRays
+          className="!absolute inset-0"
+          raysColor="#e8c766"
+          raysSpeed={0.6}
+          lightSpread={0.9}
+          rayLength={1.6}
+          glow={0.5}
+          atmosphere={0.3}
+          mouseInfluence={0.08}
+          cursorShadow={false}
+          clickPulse={false}
+          opacity={0.8}
+        />
         <motion.h1
           ref={title}
           id="hero-title"
           style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
-          className="display mt-[18vh] px-4 text-center text-[clamp(2.75rem,7.8vw,9rem)] sm:mt-[16vh]"
+          className="display relative mt-[18vh] px-4 text-center text-[clamp(2.75rem,7.8vw,9rem)] sm:mt-[16vh]"
         >
           {lines.map((line, i) => (
-            <span key={line} className="block -mb-[0.12em] overflow-hidden pb-[0.18em]">
-              <span className="rise block" style={{ animationDelay: `${120 + i * 120}ms` }}>
-                {line}
-              </span>
+            <span key={line} className="block pb-[0.08em]">
+              {line.split(" ").map((word, j, all) => (
+                <span key={j}>
+                  <span
+                    className="blur-in inline-block"
+                    style={{ animationDelay: `${150 + (i * 3 + j) * 130}ms` }}
+                  >
+                    {word}
+                  </span>
+                  {j < all.length - 1 && " "}
+                </span>
+              ))}
             </span>
           ))}
         </motion.h1>
