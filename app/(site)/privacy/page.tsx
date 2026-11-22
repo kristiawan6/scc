@@ -8,6 +8,7 @@ import { wrap } from "@/lib/ui";
 
 const meta = {
   title: "Kebijakan Privasi & Data Jemaat | GBI Soho City Church",
+  crumb: "Kebijakan Privasi",
   description: "Bagaimana GBI Soho City Church mengelola data yang kamu kirim lewat website gbiscc.org, termasuk formulir kontak dan permohonan doa.",
   path: "/privacy",
 };
@@ -16,7 +17,7 @@ export const metadata: Metadata = pageMeta(meta);
 export default function PrivacyPage() {
   return (
     <>
-      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, description: meta.description })} />
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="Privacy" />
       <section className="bg-paper py-24 text-ink">
         <div className={`${wrap} max-w-3xl space-y-4 leading-relaxed text-stone`}>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { faqs } from "@/content/faq";
+import { faqs, scheduleSentence } from "@/content/faq";
 import { site } from "@/content/site";
 import { faqJsonLd, pageJsonLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
@@ -11,22 +11,26 @@ import { wrap } from "@/lib/ui";
 
 const meta = {
   title: "Jadwal Ibadah Minggu & Worship Night | GBI Soho City Church",
-  description: "Jadwal ibadah GBI Soho City Church di SOHO Pancoran: Ibadah Raya Minggu 10.00 & 16.30, Sekolah Minggu 10.00, Worship Night Rabu 19.00 (juga live YouTube & Instagram), Doa Fajar Sabtu 05.00 via Zoom.",
+  crumb: "Jadwal Ibadah",
+  description: `Jadwal ibadah GBI Soho City Church di SOHO Pancoran, Jakarta Selatan. ${scheduleSentence()}`,
   path: "/jadwal-ibadah",
 };
 export const metadata: Metadata = pageMeta(meta);
 
-const updatedLabel = new Date(site.updated).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+// timeZone pinned so the label never shifts a day with the build machine's zone.
+const updatedLabel = new Date(`${site.updated}T00:00:00+07:00`).toLocaleDateString("id-ID", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "Asia/Jakarta",
+});
 
 export default function JadwalPage() {
   return (
     <>
-      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, description: meta.description }, faqJsonLd(meta.path, faqs))} />
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description }, faqJsonLd(meta.path, faqs))} />
       <PageHeader title="Jadwal Ibadah">
-        <p>
-          Ibadah Raya setiap Minggu pukul 10.00 dan 16.30, Sekolah Minggu pukul 10.00, Worship Night setiap Rabu pukul
-          19.00, dan Doa Fajar setiap Sabtu pukul 05.00 lewat Zoom. Semua waktu dalam WIB.
-        </p>
+        <p>{scheduleSentence()} Semua waktu dalam WIB.</p>
         <p className="mt-4 text-sm">
           Terakhir diperbarui <time dateTime={site.updated}>{updatedLabel}</time>
         </p>

@@ -1,18 +1,17 @@
 // Markdown copies of the public pages for AI agents (served at /<page>.md and for
 // "Accept: text/markdown"). Built from the same content files as the HTML pages.
-import { campuses } from "@/content/campuses";
+import { campuses, dayLabel } from "@/content/campuses";
 import { faqs } from "@/content/faq";
 import { ministries } from "@/content/ministries";
 import { nextSteps } from "@/content/next-steps";
 import { privacy } from "@/content/privacy";
 import { site } from "@/content/site";
 
-const day: Record<string, string> = { Sunday: "Minggu", Wednesday: "Rabu", Saturday: "Sabtu" };
 const [main] = campuses;
 
 const schedule = () =>
   main.services
-    .map((s) => `- **${s.type}**: ${day[s.day] ?? s.day} ${s.times.join(" & ").replace(/:/g, ".")} WIB${s.note?.includes("·") ? ` (${s.note.split("·")[1].trim()})` : ""}`)
+    .map((s) => `- **${s.type}**: ${dayLabel(s.day)} ${s.times.join(" & ").replace(/:/g, ".")} WIB${s.note?.includes("·") ? ` (${s.note.split("·")[1].trim()})` : ""}`)
     .join("\n");
 const address = () => site.address.join(", ");
 const contact = () => `- Email: ${site.email}\n- Telepon: ${site.phone.number} (${site.phone.label})\n- Alamat: ${address()}`;
@@ -118,13 +117,33 @@ Untuk informasi persembahan dan perpuluhan, pilih topik "Persembahan" di formuli
 };
 
 export function renderMarkdown(slug: string): string | null {
+  if (!Object.hasOwn(markdownPages, slug)) return null;
   const page = markdownPages[slug];
-  if (!page) return null;
   return `# ${page.title}\n\n${page.body()}\n\n---\n\nHalaman HTML: ${site.url}${page.path === "/" ? "/" : page.path}\n`;
+}
+
+/** True when the Accept header ranks text/markdown strictly above text/html (q-values respected). */
+export function prefersMarkdown(accept: string): boolean {
+  const q = (type: string) => {
+    let best = 0;
+    for (const part of accept.split(",")) {
+      const [range, ...params] = part.trim().toLowerCase().split(";");
+      const r = range.trim();
+      if (r !== type && r !== `${type.split("/")[0]}/*` && r !== "*/*") continue;
+      const qp = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
+      const value = qp ? Number(qp.slice(2)) : 1;
+      // An exact match beats wildcards; wildcards only count when nothing exact is listed.
+      best = Math.max(best, r === type ? value + 2 : value);
+    }
+    return best;
+  };
+  const md = q("text/markdown");
+  const html = q("text/html");
+  return md >= 2 && md > html;
 }
 
 /** "/" -> "index", "/about" -> "about"; null when the page has no Markdown copy. */
 export const markdownSlug = (path: string) => {
   const slug = path === "/" ? "index" : path.replace(/^\//, "");
-  return slug in markdownPages ? slug : null;
+  return Object.hasOwn(markdownPages, slug) ? slug : null;
 };

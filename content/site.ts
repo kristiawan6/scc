@@ -37,6 +37,8 @@ export const site = {
     { name: "GBI Rayon 1i", href: "" },
   ],
   founded: "2018",
+  // First publish date of this website (fixed). Used as datePublished in structured data.
+  launched: "2026-11-22",
   // Last content review; shown on pages and used as dateModified in structured data. Bump when content changes.
   updated: "2026-11-22",
   vision: "Menjadi saksi Kristus di era pentakosta ketiga.",

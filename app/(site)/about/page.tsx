@@ -10,6 +10,7 @@ import { wrap } from "@/lib/ui";
 
 const meta = {
   title: "Tentang Kami: Visi, Misi & Gembala | GBI Soho City Church",
+  crumb: "Tentang Kami",
   description: "Cerita, visi, misi, dan para gembala GBI Soho City Church, gereja GBI Rayon 1i yang melayani sejak 2018 di SOHO Pancoran, Jakarta Selatan.",
   path: "/about",
 };
@@ -18,7 +19,7 @@ export const metadata: Metadata = pageMeta(meta);
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, description: meta.description })} />
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="About">
         <p>Shalom, selamat datang di {site.name}.</p>
         <p className="mt-4">{site.story}</p>

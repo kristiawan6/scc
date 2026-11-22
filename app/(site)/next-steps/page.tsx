@@ -11,6 +11,7 @@ import { btnDark, wrap } from "@/lib/ui";
 
 const meta = {
   title: "Next Steps: COOL & Growth in Christ | GBI Soho City Church",
+  crumb: "Next Steps",
   description: "Baru di GBI Soho City Church? Mulai dari sini: kenal Yesus, gabung COOL, kelas Growth in Christ, dan melayani.",
   path: "/next-steps",
 };
@@ -19,7 +20,7 @@ export const metadata: Metadata = pageMeta(meta);
 export default function NextStepsPage() {
   return (
     <>
-      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, description: meta.description })} />
+      <JsonLd data={pageJsonLd({ path: meta.path, name: meta.title, crumb: meta.crumb, description: meta.description })} />
       <PageHeader title="Next Steps">
         <p>Di mana pun kamu sekarang dalam perjalanan iman, selalu ada langkah berikutnya. Kami jalan bersamamu.</p>
       </PageHeader>

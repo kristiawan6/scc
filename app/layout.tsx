@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Caveat, Epilogue, Inter } from "next/font/google";
 import { site } from "@/content/site";
 import { churchJsonLd, toScript } from "@/lib/jsonld";
-import { pageMeta } from "@/lib/seo";
+import { ogImage } from "@/lib/seo";
 import "./globals.css";
 
 const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-epilogue" });
@@ -11,7 +11,10 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-c
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  ...pageMeta({ title: `${site.name} | Gereja di Pancoran, Jakarta Selatan`, description: site.description, path: "/" }),
+  title: `${site.name} | Gereja di Pancoran, Jakarta Selatan`,
+  description: site.description,
+  openGraph: { type: "website", locale: "id_ID", siteName: site.name, images: [ogImage] },
+  twitter: { card: "summary_large_image", images: [ogImage.url] },
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,

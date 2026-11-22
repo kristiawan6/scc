@@ -98,7 +98,10 @@ export function churchJsonLd() {
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 /** WebPage + breadcrumb for one page; pass extra nodes (e.g. FAQPage) to include them. */
-export function pageJsonLd({ path, name, description }: { path: string; name: string; description: string }, ...extra: object[]) {
+export function pageJsonLd(
+  { path, name, crumb, description }: { path: string; name: string; crumb?: string; description: string },
+  ...extra: object[]
+) {
   const url = abs(path);
   return {
     "@context": "https://schema.org",
@@ -113,7 +116,7 @@ export function pageJsonLd({ path, name, description }: { path: string; name: st
         isPartOf: { "@id": SITE },
         about: { "@id": ORG },
         author: { "@id": ORG },
-        datePublished: site.updated,
+        datePublished: site.launched,
         dateModified: site.updated,
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
@@ -122,7 +125,7 @@ export function pageJsonLd({ path, name, description }: { path: string; name: st
         "@id": `${url}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Beranda", item: site.url },
-          ...(path === "/" ? [] : [{ "@type": "ListItem", position: 2, name, item: url }]),
+          ...(path === "/" ? [] : [{ "@type": "ListItem", position: 2, name: crumb ?? name, item: url }]),
         ],
       },
       ...extra,
